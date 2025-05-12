@@ -1,3 +1,4 @@
+"use client"
 //? This component helps in getting the details about the user details
 import React from "react";
 import { Box, TextField, Typography, useTheme } from "@mui/material";

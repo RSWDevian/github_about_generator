@@ -4,6 +4,7 @@ import { Box, Typography, useTheme } from "@mui/material";
 //? importing components
 import PersonalComponent from "@/components/personalComponent";
 import SkillsComponent from "@/components/skillsComponent";
+import LinksComponent from "@/components/linksComponent";
 
 function Page() {
   //* for using the defined theme
@@ -35,13 +36,41 @@ function Page() {
       qt: [],
       game: [],
     },
-    links: [
-      {
-        name: "",
-        icon: "",
-        link: "",
+    links: {
+      professional: {
+        linkedin: "",
+        xing: "",
+        angellist: "",
+        wellfound: "",
       },
-    ],
+      developer: {
+        github: "",
+        gitlab: "",
+        bitbucket: "",
+        stackoverflow: "",
+        devto: "",
+        hashnode: "",
+        replit: "",
+      },
+      design: {
+        dribble: "",
+        behance: "",
+        adobe: "",
+      },
+      content: {
+        youtube: "",
+        twitch: "",
+        tiktok: "",
+        instagram: "",
+      },
+      writing: {
+        medium: "",
+        substack: "",
+        reddit: "",
+        twitter: "",
+      },
+      personalwebsite: "",
+    },
     graphs: "",
   });
 
@@ -118,6 +147,7 @@ function Page() {
           handleChange={handlePersonalDetails}
         />
         <SkillsComponent details={details} handleChange={handleSkillsDetails} />
+        <LinksComponent details={details} handleChange={handleLinksDetails} />
       </Box>
 
       {/* Right Half */}
