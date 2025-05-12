@@ -1,10 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Button } from "@mui/material";
 //? importing components
 import PersonalComponent from "@/components/personalComponent";
 import SkillsComponent from "@/components/skillsComponent";
 import LinksComponent from "@/components/linksComponent";
+import ViewerComponent from "@/components/viewerComponent";
+//? importing generator function
+import generate from "../api/generate";
 
 function Page() {
   //* for using the defined theme
@@ -74,6 +77,9 @@ function Page() {
     graphs: "",
   });
 
+  //* To store Markdown component
+  const [markdown, setMarkdown] = useState("");
+
   //& Functions to handle the field changes
 
   //? Function to handle change in personal details
@@ -106,6 +112,13 @@ function Page() {
       ...prevDetails,
       graphs: newGraphs,
     }));
+  };
+
+  //& Function to handle Generate Button
+  const handleGenerate = () => {
+    const markdown = generate(details);
+    setMarkdown(markdown);
+    // console.log(markdown);
   };
 
   return (
@@ -142,12 +155,25 @@ function Page() {
         }}
       >
         <Typography variant="h4">Create</Typography>
+        {/* For storing personal details */}
         <PersonalComponent
           details={details}
           handleChange={handlePersonalDetails}
         />
+        {/* For storing skills component */}
         <SkillsComponent details={details} handleChange={handleSkillsDetails} />
+        {/*For storing links component  */}
         <LinksComponent details={details} handleChange={handleLinksDetails} />
+        <Box display="flex" justifyContent="center" width="100%">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleGenerate}
+            sx={{ mt: 2, mb: 4, px: 4 }}
+          >
+            Generate
+          </Button>
+        </Box>
       </Box>
 
       {/* Right Half */}
@@ -157,8 +183,26 @@ function Page() {
         justifyContent="center"
         alignItems="center"
         color={theme.palette.secondary.contrastText}
+        sx={{
+          borderRight: "2px solid ${theme.palette.primary.main}",
+          overflowY: "scroll",
+          height: "100vh",
+          "&::-webkit-scrollbar": {
+            width: "4px", // Width of the scrollbar
+          },
+          "&::-webkit-scrollbar-track": {
+            backgroundColor: theme.palette.background.default, // Background of the scrollbar track
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: theme.palette.primary.main, // Color of the scrollbar thumb
+            borderRadius: "4px", // Rounded corners for the scrollbar thumb
+          },
+          "&::-webkit-scrollbar-thumb:hover": {
+            backgroundColor: theme.palette.primary.light, // Darker color on hover
+          },
+        }}
       >
-        <Typography variant="h4">Viewer</Typography>
+        <ViewerComponent markdown={markdown} />
       </Box>
     </Box>
   );
