@@ -2,11 +2,6 @@
 import React, { useState } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 //? importing components
-import personalComponent from "@/components/personalComponent"; // shows the personal about of the user
-import skillsComponent from "@/components/skillsComponent"; // shows the skills of the user
-import linksComponent from "@/components/linksComponent"; // shows the links provided by the user
-import graphsComponent from "@/components/graphsComponent"; // shows graphical representations of the user
-import viewerComponent from "@/components/viewerComponent"; // viewer for the user
 import PersonalComponent from "@/components/personalComponent";
 import SkillsComponent from "@/components/skillsComponent";
 
@@ -17,12 +12,29 @@ function Page() {
   //* for storing the details set by the user
   const [details, setDetails] = useState({
     about: "",
-    skills: [
-      {
-        name: "",
-        icon: "",
-      },
-    ],
+    skills: {
+      languages: [],
+      frontend: [],
+      backend: [],
+      tools: [],
+      databases: [],
+      clouds: [],
+      devops: [],
+      ai: [],
+      mobiledev: [],
+      testing: [],
+      developertools: [],
+      security: [],
+      webprotocols: [],
+      uiux: [],
+      cms: [],
+      build: [],
+      localization: [],
+      embedded: [],
+      emerging: [],
+      qt: [],
+      game: [],
+    },
     links: [
       {
         name: "",
@@ -63,7 +75,7 @@ function Page() {
   const handleGraphDetails = (newGraphs) => {
     setDetails((prevDetails) => ({
       ...prevDetails,
-      details: newGraphs,
+      graphs: newGraphs,
     }));
   };
 
@@ -79,11 +91,25 @@ function Page() {
         flex={1}
         display="flex"
         flexDirection="column"
-        justifyContent="center"
         alignItems="center"
         color={theme.palette.primary.main}
         sx={{
-          borderRight: `2px solid ${theme.palette.primary.main}`, // Add a border to the right
+          borderRight: "2px solid ${theme.palette.primary.main}",
+          overflowY: "scroll",
+          height: "100vh",
+          "&::-webkit-scrollbar": {
+            width: "4px", // Width of the scrollbar
+          },
+          "&::-webkit-scrollbar-track": {
+            backgroundColor: theme.palette.background.default, // Background of the scrollbar track
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: theme.palette.primary.main, // Color of the scrollbar thumb
+            borderRadius: "4px", // Rounded corners for the scrollbar thumb
+          },
+          "&::-webkit-scrollbar-thumb:hover": {
+            backgroundColor: theme.palette.primary.light, // Darker color on hover
+          },
         }}
       >
         <Typography variant="h4">Create</Typography>

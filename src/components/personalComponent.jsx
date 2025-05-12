@@ -1,26 +1,26 @@
 //? This component helps in getting the details about the user details
-import React, { useState } from "react";
-import { Box, TextField, Typography, Button, useTheme } from "@mui/material";
+import React from "react";
+import { Box, TextField, Typography, useTheme } from "@mui/material";
 
 function PersonalComponent({ details, handleChange }) {
-
   //* to use the app themes
   const theme = useTheme();
 
   //? Function to handle the change in about textbox
   const handleAboutChange = (value) => {
     handleChange(value);
-  }
+  };
 
   return (
     <Box
       component="form"
       display="flex"
       flexDirection="row"
-      alignItems="center"
-      justifyContent="center"
       p={2}
       gap={2}
+      sx={{
+        width: "100%"
+      }}
     >
       <Typography variant="h5">About:</Typography>
       <TextField
