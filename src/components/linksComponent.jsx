@@ -1,11 +1,11 @@
 import React from 'react'
 
-function page() {
+function linksComponent() {
   return (
     <div>
-      Hi
+      
     </div>
   )
 }
 
-export default page
+export default linksComponent

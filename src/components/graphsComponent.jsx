@@ -1,6 +1,6 @@
 import React from 'react'
 
-function generate() {
+function graphsComponent() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function generate() {
   )
 }
 
-export default generate
+export default graphsComponent
